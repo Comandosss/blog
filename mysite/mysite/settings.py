@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -136,8 +137,13 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Конфигурация сервера электронной почты
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_USER')
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_HOST_USER = os.getenv('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+LOGIN_REDIRECT_URL = '/'
+
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
