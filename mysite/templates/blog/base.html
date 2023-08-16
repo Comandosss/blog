@@ -8,6 +8,11 @@
 </head>
 <body>
   <div id="content">
+    {% if messages %}
+      {% for message in messages %}
+        {{ message.tags }} {{ message }}
+      {% endfor %}
+    {% endif %}
     {% block content %}
     {% endblock %}
   </div>
@@ -17,6 +22,16 @@
       This is my blog.
       I've written {% total_posts %} posts so far.
     </p>
+    <hr>
+    {% if user.is_authenticated %}
+      Hi, {{ user.username }}!
+      <p><a href="{% url 'logout' %}">Sign Out</a></p>
+    {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">Sign In</a>
+      <a href="{% url 'signup' %}">| Create account</a>
+    {% endif %}
+    </hr>
     <h3>Latest posts</h3>
     {% show_latest_posts 3 %}
     <h3>Most commented posts</h3>
