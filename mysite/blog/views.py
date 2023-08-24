@@ -11,13 +11,11 @@ from .forms import EmailPostFrom, CommentForm, SearchForm
 
 
 def post_list(request, tag_slug=None):
-    """Извлечение всех постов c статусом PUBLISHED"""
     post_list = Post.published.all()
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         post_list = post_list.filter(tags__in=[tag])
-    # Постраничная разбивка с 3 постами на страницу
     paginator = Paginator(post_list, 3)
     page_number = request.GET.get('page', 1)
     try:
@@ -72,14 +70,12 @@ def post_share(request, post_id):
 
 @require_POST
 def post_comment(request, post_id):
-    post = get_object_or_404(Post, id=post_id, 
+    post = get_object_or_404(Post, id=post_id,
                              status=Post.Status.PUBLISHED)
     comment = None
-    # Комментарий был отправлен
     form = CommentForm(data=request.POST)
     if form.is_valid():
         comment = form.save(commit=False)
-        # Назначить пост комментарию
         comment.post = post
         comment.save()
     return render(request, 'blog/post/comment.html',
