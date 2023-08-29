@@ -41,7 +41,7 @@ python -m venv env
 pip install -r requirements.txt
 ```
 
-4. Создайте файл `.env` в корневой папке проекта. Впишите в .env следующее:
+4. Создайте файл `.env` в корневой папке проекта и впишите следующее:
 ```
 POSTGRES_DBNAME = 'Your name DB'
 
