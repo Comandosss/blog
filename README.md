@@ -42,7 +42,7 @@ pip install -r requirements.txt
 ```
 
 4. Создайте файл `.env` в корневой папке проекта. Впишите в .env следующее:
-
+```
 POSTGRES_DBNAME = 'Your name DB'
 
 POSTGRES_USER = 'Your user'
@@ -62,7 +62,7 @@ GITHUB_SECRET = 'Your GitHub secret key'
 GOOGLE_KEY = 'Your client ID'
 
 GOOGLE_SECRET = 'Your client secret'
-
+```
 6. Создайте базу данных и выполните миграции:
 ```
 python manage.py migrate
