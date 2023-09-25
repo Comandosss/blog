@@ -4,7 +4,7 @@
 
 Разработан по курсу [Django 4 для начинающих](https://stepik.org/course/174634).
 
-Сайт развернут на продакшн сервере с помощью Gunicorn, арендован VPS и домен: <http://alexlevkin.django-blog.ru>
+Сайт развернут на продакшн сервере с помощью Gunicorn, арендован VPS и домен: <https://alexlevkin.django-blog.ru>
 
 ## Возможности сайта
 
